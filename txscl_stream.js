@@ -111,7 +111,7 @@ TXSCL_socket.on('tx', function (data) {
     TXSCL_json = '{"time": "'+time+'", "coin": "'+ac_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, TXSCL_json+",\r\n", function (err) {});
     TXSCL_txps = TXSCL_ac/interval; txps_ac = tx_ac/interval; txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL_txps); colorize_txps_e(txps_ac); colorize_txps_g(txps_gl);
-    console.log(fadeblue+" | "+utc+white+" | "+TXSCL_col1+data.txid+white+" | "+TXSCL_col2+ac_name+white+" | "+heat+TXSCL_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL_txps_gl.toFixed(2)+" tx/s"+white+" |");
+    console.log(fadeblue+" | "+utc+white+" | "+TXSCL_col1+data.txid+white+" | "+TXSCL_col2+ac_name+white+"  | "+heat+TXSCL_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
 
 var TXSCL000_socket = require('socket.io-client')('http://txscl000.meshbits.io/');
