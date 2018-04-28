@@ -1,6 +1,6 @@
 {
   "name": "tx_stream",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "collecting tx data from insight api event streams",
   "main": "tx_stream.js",
   "scripts": {
