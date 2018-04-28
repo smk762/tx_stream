@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/smk762/tx_stream/issues"
   },
-  "homepage": "https://github.com/smk762/tx_stream#readme"
+  "homepage": "https://github.com/smk762/tx_stream#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "socket.io-client": "^2.1.0"
+  }
 }
