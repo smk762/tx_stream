@@ -1,23 +1,24 @@
 var col = require('./colors.js');
 var fs = require('fs');
 
-var interval = 20; var tx_ac =0; tx_gl = 0; tx_json = ""; coin_name = ""; txt = "";
-var BTC_txps_gl = 0; BTC_txps = 0; BTC_count = 0;
-var BCH_txps_gl = 0; BCH_txps = 0; BCH_count = 0;
-var KMD_txps_gl = 0; KMD_txps = 0; KMD_count = 0; 
-var ZEC_txps_gl = 0; ZEC_txps = 0; ZEC_count = 0;
-var DASH_txps_gl = 0; DASH_txps = 0; DASH_count = 0;
-var LTC_txps_gl = 0; LTC_txps = 0; LTC_count = 0;
+var interval = 20; var tx_gl = 0; tx_json = ""; coin_name = ""; txt = ""; tx_ac =0; txps_ac =0;
+var TXSCL000_txps_gl = 0; TXSCL000_txps_pct = 0; TXSCL000_count = 0;
+var BTC_txps_gl = 0; BTC_txps_pct = 0; BTC_count = 0;
+var BCH_txps_gl = 0; BCH_txps_pct = 0; BCH_count = 0;
+var KMD_txps_gl = 0; KMD_txps_pct = 0; KMD_count = 0; 
+var ZEC_txps_gl = 0; ZEC_txps_pct = 0; ZEC_count = 0;
+var DASH_txps_gl = 0; DASH_txps_pct = 0; DASH_count = 0;
+var LTC_txps_gl = 0; LTC_txps_pct = 0; LTC_count = 0;
 
-var TXSCL_txps_gl = 0; TXSCL_txps = 0; TXSCL_count = 0;
-var TXSCL000_txps_gl = 0; TXSCL000_txps = 0; TXSCL000_count = 0;
-var TXSCL001_txps_gl = 0; TXSCL001_txps = 0; TXSCL001_count = 0;
-var TXSCL002_txps_gl = 0; TXSCL002_txps = 0; TXSCL002_count = 0;
-var TXSCL003_txps_gl = 0; TXSCL003_txps = 0; TXSCL003_count = 0;
-var TXSCL004_txps_gl = 0; TXSCL004_txps = 0; TXSCL004_count = 0;
-var TXSCL005_txps_gl = 0; TXSCL005_txps = 0; TXSCL005_count = 0;
-var TXSCL006_txps_gl = 0; TXSCL006_txps = 0; TXSCL006_count = 0;
-var TXSCL007_txps_gl = 0; TXSCL007_txps = 0; TXSCL007_count = 0;
+var TXSCL_txps_gl = 0; TXSCL_txps_pct = 0; TXSCL_count = 0; TXSCL_ac =0;
+var TXSCL000_txps_gl = 0; TXSCL000_txps_pct = 0; TXSCL000_count = 0; TXSCL000_ac =0;
+var TXSCL001_txps_gl = 0; TXSCL001_txps_pct = 0; TXSCL001_count = 0; TXSCL001_ac =0;
+var TXSCL002_txps_gl = 0; TXSCL002_txps_pct = 0; TXSCL002_count = 0; TXSCL002_ac =0;
+var TXSCL003_txps_gl = 0; TXSCL003_txps_pct = 0; TXSCL003_count = 0; TXSCL003_ac =0;
+var TXSCL004_txps_gl = 0; TXSCL004_txps_pct = 0; TXSCL004_count = 0; TXSCL004_ac =0;
+var TXSCL005_txps_gl = 0; TXSCL005_txps_pct = 0; TXSCL005_count = 0; TXSCL005_ac =0;
+var TXSCL006_txps_gl = 0; TXSCL006_txps_pct = 0; TXSCL006_count = 0; TXSCL006_ac =0;
+var TXSCL007_txps_gl = 0; TXSCL007_txps_pct = 0; TXSCL007_count = 0; TXSCL007_ac =0;
 
 var logfile = "./tx_log.json";
 var time = new Date(); var utc = time.toUTCString();
