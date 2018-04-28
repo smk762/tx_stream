@@ -1,0 +1,24 @@
+{
+  "name": "tx_stream",
+  "version": "1.0.0",
+  "description": "collecting tx data from insight api event streams",
+  "main": "tx_stream.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smk762/tx_stream.git"
+  },
+  "keywords": [
+    "insight",
+    "txid",
+    "socketio"
+  ],
+  "author": "“smk762”",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smk762/tx_stream/issues"
+  },
+  "homepage": "https://github.com/smk762/tx_stream#readme"
+}
