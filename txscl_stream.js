@@ -111,7 +111,7 @@ TXSCL_socket.on('tx', function (data) {
     TXSCL_json = '{"time": "'+time+'", "coin": "'+ac_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, TXSCL_json+",\r\n", function (err) {});
     TXSCL_txps = TXSCL_ac/interval; txps_ac = tx_ac/interval; txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL_txps); colorize_txps_e(txps_ac); colorize_txps_g(txps_gl);
-    console.log(fadeblue+" | "+utc+white+" | "+TXSCL_col1+data.txid+white+" | "+TXSCL_col2+ac_name+white+"     | "+heat+TXSCL_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL_txps_gl.toFixed(2)+" tx/s"+white+" |");
+    console.log(fadeblue+" | "+utc+white+" | "+TXSCL_col1+data.txid+white+" | "+TXSCL_col2+ac_name+white+" | "+heat+TXSCL_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
 
 var TXSCL000_socket = require('socket.io-client')('http://txscl000.meshbits.io/');
@@ -128,7 +128,7 @@ TXSCL000_socket.on('tx', function (data) {
     TXSCL000_json = '{"time": "'+time+'", "coin": "'+ac_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, TXSCL000_json+",\r\n", function (err) {});
     TXSCL000_txps = TXSCL000_ac/interval; txps_ac = tx_ac/interval; txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL000_txps); colorize_txps_e(txps_ac); colorize_txps_g(txps_gl);
-    console.log(fadeblue+" | "+utc+white+" | "+TXSCL000_col1+data.txid+white+" | "+TXSCL000_col2+ac_name+white+"     | "+heat+TXSCL000_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL000_txps_gl.toFixed(2)+" tx/s"+white+" |");
+    console.log(fadeblue+" | "+utc+white+" | "+TXSCL000_col1+data.txid+white+" | "+TXSCL000_col2+ac_name+white+" | "+heat+TXSCL000_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL000_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
 
 var TXSCL001_socket = require('socket.io-client')('http://txscl002.meshbits.io/');
@@ -145,7 +145,7 @@ TXSCL001_socket.on('tx', function (data) {
     TXSCL001_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL001_json+",\r\n", function (err) {});
     TXSCL001_txps = TXSCL001_ac/interval; txps_ac = tx_ac/interval; txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL001_txps); colorize_txps_e(txps_ac); colorize_txps_g(txps_gl);
-    console.log(fadeblue+" | "+utc+white+" | "+TXSCL001_col1+data.txid+white+" | "+TXSCL001_col2+ac_name+white+"     | "+heat+TXSCL001_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL001_txps_gl.toFixed(2)+" tx/s"+white+" |");
+    console.log(fadeblue+" | "+utc+white+" | "+TXSCL001_col1+data.txid+white+" | "+TXSCL001_col2+ac_name+white+" | "+heat+TXSCL001_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL001_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
 
 var TXSCL002_socket = require('socket.io-client')('http://txscl002.meshbits.io/');
@@ -162,7 +162,7 @@ TXSCL002_socket.on('tx', function (data) {
     TXSCL002_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL002_json+",\r\n", function (err) {});
     TXSCL002_txps = TXSCL002_ac/interval; txps_ac = tx_ac/interval; txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL002_txps); colorize_txps_e(txps_ac); colorize_txps_g(txps_gl);
-    console.log(fadeblue+" | "+utc+white+" | "+TXSCL002_col1+data.txid+white+" | "+TXSCL002_col2+ac_name+white+"     | "+heat+TXSCL002_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL002_txps_gl.toFixed(2)+" tx/s"+white+" |");
+    console.log(fadeblue+" | "+utc+white+" | "+TXSCL002_col1+data.txid+white+" | "+TXSCL002_col2+ac_name+white+" | "+heat+TXSCL002_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL002_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
 
 var TXSCL003_socket = require('socket.io-client')('http://txscl003.meshbits.io/');
@@ -179,7 +179,7 @@ TXSCL003_socket.on('tx', function (data) {
     TXSCL003_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL003_json+",\r\n", function (err) {});
     TXSCL003_txps = TXSCL003_ac/interval; txps_ac = tx_ac/interval; txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL003_txps); colorize_txps_e(txps_ac); colorize_txps_g(txps_gl);
-    console.log(fadeblue+" | "+utc+white+" | "+TXSCL003_col1+data.txid+white+" | "+TXSCL003_col2+ac_name+white+"     | "+heat+TXSCL003_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL003_txps_gl.toFixed(2)+" tx/s"+white+" |");
+    console.log(fadeblue+" | "+utc+white+" | "+TXSCL003_col1+data.txid+white+" | "+TXSCL003_col2+ac_name+white+" | "+heat+TXSCL003_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL003_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
 
 
@@ -197,7 +197,7 @@ TXSCL004_socket.on('tx', function (data) {
     TXSCL004_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL004_json+",\r\n", function (err) {});
     TXSCL004_txps = TXSCL004_ac/interval; txps_ac = tx_ac/interval; txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL004_txps); colorize_txps_e(txps_ac); colorize_txps_g(txps_gl);
-    console.log(fadeblue+" | "+utc+white+" | "+TXSCL004_col1+data.txid+white+" | "+TXSCL004_col2+ac_name+white+"     | "+heat+TXSCL004_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL004_txps_gl.toFixed(2)+" tx/s"+white+" |");
+    console.log(fadeblue+" | "+utc+white+" | "+TXSCL004_col1+data.txid+white+" | "+TXSCL004_col2+ac_name+white+" | "+heat+TXSCL004_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL004_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
 
 var TXSCL005_socket = require('socket.io-client')('http://txscl005.meshbits.io/');
@@ -214,7 +214,7 @@ TXSCL005_socket.on('tx', function (data) {
     TXSCL005_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL005_json+",\r\n", function (err) {});
     TXSCL005_txps = TXSCL005_ac/interval; txps_ac = tx_ac/interval; txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL005_txps); colorize_txps_e(txps_ac); colorize_txps_g(txps_gl);
-    console.log(fadeblue+" | "+utc+white+" | "+TXSCL005_col1+data.txid+white+" | "+TXSCL005_col2+ac_name+white+"     | "+heat+TXSCL005_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL005_txps_gl.toFixed(2)+" tx/s"+white+" |");
+    console.log(fadeblue+" | "+utc+white+" | "+TXSCL005_col1+data.txid+white+" | "+TXSCL005_col2+ac_name+white+" | "+heat+TXSCL005_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL005_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
 
 var TXSCL006_socket = require('socket.io-client')('http://txscl006.meshbits.io/');
@@ -231,7 +231,7 @@ TXSCL006_socket.on('tx', function (data) {
     TXSCL006_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL006_json+",\r\n", function (err) {});    
     TXSCL006_txps = TXSCL006_ac/interval; txps_ac = tx_ac/interval; txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL006_txps); colorize_txps_e(txps_ac);
-    console.log(fadeblue+" | "+utc+white+" | "+TXSCL006_col1+data.txid+white+" | "+TXSCL006_col2+ac_name+white+"     | "+heat+TXSCL006_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL006_txps_gl.toFixed(2)+" tx/s"+white+" |");
+    console.log(fadeblue+" | "+utc+white+" | "+TXSCL006_col1+data.txid+white+" | "+TXSCL006_col2+ac_name+white+" | "+heat+TXSCL006_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL006_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
 
 var TXSCL007_socket = require('socket.io-client')('http://txscl007.meshbits.io/');
@@ -248,7 +248,7 @@ TXSCL007_socket.on('tx', function (data) {
     TXSCL007_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL007_json+",\r\n", function (err) {});
     XSCL007_txps = TXSCL007_ac/interval; txps_ac = tx_ac/interval; txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL007_txps); colorize_txps_e(txps_ac); colorize_txps_g(txps_gl);
-    console.log(fadeblue+" | "+utc+white+" | "+TXSCL007_col1+data.txid+white+" | "+TXSCL007_col2+ac_name+white+"     | "+heat+TXSCL007_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL007_txps_gl.toFixed(2)+" tx/s"+white+" |");
+    console.log(fadeblue+" | "+utc+white+" | "+TXSCL007_col1+data.txid+white+" | "+TXSCL007_col2+ac_name+white+" | "+heat+TXSCL007_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL007_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
 
 
