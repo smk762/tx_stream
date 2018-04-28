@@ -8,12 +8,12 @@ shows realtime transactions for BTC, BCH, LTC, DASH, KMD and ZEC
 
 
 ## tscl_stream 
-shows realtime Asset Chain transactions (with above coins as reference)
+shows realtime Asset Chain transactions
 
 ![image](https://user-images.githubusercontent.com/35845239/39395490-b1d23410-4b11-11e8-8d34-4bc1a52684f2.png)
 
 
 ## combined stream
-shows realtime transactions for BTC, BCH, LTC, DASH, KMD, ZEC and Asset Chains.
+shows realtime transactions for Asset Chains with BTC, BCH, LTC, DASH, KMD and ZEC (for reference).
 
 ![image](https://user-images.githubusercontent.com/35845239/39395535-45515c8e-4b12-11e8-8a02-42b02b9b7cb4.png)
