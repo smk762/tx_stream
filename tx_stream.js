@@ -151,8 +151,11 @@ KMD_socket.on('tx', function (data) {
     colorize_txps_i(KMD_txps); colorize_txps_g(KMD_txps_gl);
     console.log(fadeblue+" | "+utc+white+" | "+KMD_col1+data.txid+white+" | "+KMD_col2+coin_name+white+"  | "+heat+KMD_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+KMD_txps_gl.toFixed(2)+" tx/s"+white+" |");
 });
-var DASH_socket = require('socket.io-client')('https://insight.dash.siampm.com');
 
+
+// ################## DASH insight explorer socket connection #####################
+
+var DASH_socket = require('socket.io-client')('https://insight.dash.siampm.com');
 DASH_socket.on('connect', function () {
     DASH_txt = green+"Connected to https://DASH.explorer.supernet.org/ at "+utc+white
     DASH_socket.emit('subscribe', 'inv'); console.log(DASH_txt);
