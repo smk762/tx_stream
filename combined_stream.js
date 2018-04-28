@@ -96,7 +96,7 @@ TXSCL006_col2=color_93;
 TXSCL007_col1=color_105; 
 TXSCL007_col2=color_93;
 
-var logfile = "./tx_log.json";
+var logfile = "./combinedTX_log.json";
 var time = new Date(); var utc = time.toUTCString();
 var heat = blue; heat_gl = blue;
 
@@ -230,7 +230,7 @@ TXSCL001_socket.on('tx', function (data) {
     tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
     tx_ac++; setTimeout(function(){ tx_ac = uncount(tx_ac) }, interval*1000);
     TXSCL001_count++; setTimeout(function(){ TXSCL001_count = uncount(TXSCL001_count) }, interval*1000);
-    TXSCL001_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL001_json+",\r\n", function (err) {});
+    TXSCL001_json = '{"time": "'+time+'", "coin": "'+ac_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, TXSCL001_json+",\r\n", function (err) {});
     TXSCL001_txps = TXSCL001_count/interval; txps_ac = tx_ac/interval; TXSCL001_txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL001_txps); colorize_txps_e(txps_ac); colorize_txps_g(TXSCL001_txps_gl);
     console.log(fadeblue+" | "+utc+white+" | "+TXSCL001_col1+data.txid+white+" | "+TXSCL001_col2+ac_name+white+" | "+heat+TXSCL001_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL001_txps_gl.toFixed(2)+" tx/s"+white+" | "+heat+txps_ac.toFixed(2)+" tx/s"+white+" |");
@@ -247,7 +247,7 @@ TXSCL002_socket.on('tx', function (data) {
     tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
     tx_ac++; setTimeout(function(){ tx_ac = uncount(tx_ac) }, interval*1000);
     TXSCL002_count++; setTimeout(function(){ TXSCL002_count = uncount(TXSCL002_count) }, interval*1000);    
-    TXSCL002_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL002_json+",\r\n", function (err) {});
+    TXSCL002_json = '{"time": "'+time+'", "coin": "'+ac_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, TXSCL002_json+",\r\n", function (err) {});
     TXSCL002_txps = TXSCL002_count/interval; txps_ac = tx_ac/interval; TXSCL002_txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL002_txps); colorize_txps_e(txps_ac); colorize_txps_g(TXSCL002_txps_gl);
     console.log(fadeblue+" | "+utc+white+" | "+TXSCL002_col1+data.txid+white+" | "+TXSCL002_col2+ac_name+white+" | "+heat+TXSCL002_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL002_txps_gl.toFixed(2)+" tx/s"+white+" | "+heat+txps_ac.toFixed(2)+" tx/s"+white+" |");
@@ -264,7 +264,7 @@ TXSCL003_socket.on('tx', function (data) {
     tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
     tx_ac++; setTimeout(function(){ tx_ac = uncount(tx_ac) }, interval*1000);
     TXSCL003_count++; setTimeout(function(){ TXSCL003_count = uncount(TXSCL003_count) }, interval*1000);    
-    TXSCL003_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL003_json+",\r\n", function (err) {});
+    TXSCL003_json = '{"time": "'+time+'", "coin": "'+ac_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, TXSCL003_json+",\r\n", function (err) {});
     TXSCL003_txps = TXSCL003_count/interval; txps_ac = tx_ac/interval; TXSCL003_txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL003_txps); colorize_txps_e(txps_ac); colorize_txps_g(TXSCL003_txps_gl);
     console.log(fadeblue+" | "+utc+white+" | "+TXSCL003_col1+data.txid+white+" | "+TXSCL003_col2+ac_name+white+" | "+heat+TXSCL003_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL003_txps_gl.toFixed(2)+" tx/s"+white+" | "+heat+txps_ac.toFixed(2)+" tx/s"+white+" |");
@@ -282,7 +282,7 @@ TXSCL004_socket.on('tx', function (data) {
     tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
     tx_ac++; setTimeout(function(){ tx_ac = uncount(tx_ac) }, interval*1000);
     TXSCL004_count++; setTimeout(function(){ TXSCL004_count = uncount(TXSCL004_count) }, interval*1000);
-    TXSCL004_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL004_json+",\r\n", function (err) {});
+    TXSCL004_json = '{"time": "'+time+'", "coin": "'+ac_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, TXSCL004_json+",\r\n", function (err) {});
     TXSCL004_txps = TXSCL004_count/interval; txps_ac = tx_ac/interval; TXSCL004_txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL004_txps); colorize_txps_e(txps_ac); colorize_txps_g(TXSCL004_txps_gl);
     console.log(fadeblue+" | "+utc+white+" | "+TXSCL004_col1+data.txid+white+" | "+TXSCL004_col2+ac_name+white+" | "+heat+TXSCL004_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL004_txps_gl.toFixed(2)+" tx/s"+white+" | "+heat+txps_ac.toFixed(2)+" tx/s"+white+" |");
@@ -299,7 +299,7 @@ TXSCL005_socket.on('tx', function (data) {
     tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
     tx_ac++; setTimeout(function(){ tx_ac = uncount(tx_ac) }, interval*1000);
     TXSCL005_count++; setTimeout(function(){ TXSCL005_count = uncount(TXSCL005_count) }, interval*1000);    
-    TXSCL005_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL005_json+",\r\n", function (err) {});
+    TXSCL005_json = '{"time": "'+time+'", "coin": "'+ac_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, TXSCL005_json+",\r\n", function (err) {});
     TXSCL005_txps = TXSCL005_count/interval; txps_ac = tx_ac/interval; TXSCL005_txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL005_txps); colorize_txps_e(txps_ac); colorize_txps_g(TXSCL005_txps_gl);
     console.log(fadeblue+" | "+utc+white+" | "+TXSCL005_col1+data.txid+white+" | "+TXSCL005_col2+ac_name+white+" | "+heat+TXSCL005_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL005_txps_gl.toFixed(2)+" tx/s"+white+" | "+heat+txps_ac.toFixed(2)+" tx/s"+white+" |");
@@ -316,7 +316,7 @@ TXSCL006_socket.on('tx', function (data) {
     tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
     tx_ac++; setTimeout(function(){ tx_ac = uncount(tx_ac) }, interval*1000);
     TXSCL006_count++; setTimeout(function(){ TXSCL006_count = uncount(TXSCL006_count) }, interval*1000);
-    TXSCL006_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL006_json+",\r\n", function (err) {});    
+    TXSCL006_json = '{"time": "'+time+'", "coin": "'+ac_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, TXSCL006_json+",\r\n", function (err) {});    
     TXSCL006_txps = TXSCL006_count/interval; txps_ac = tx_ac/interval; TXSCL006_txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL006_txps); colorize_txps_e(txps_ac); colorize_txps_g(TXSCL006_txps_gl);
     console.log(fadeblue+" | "+utc+white+" | "+TXSCL006_col1+data.txid+white+" | "+TXSCL006_col2+ac_name+white+" | "+heat+TXSCL006_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL006_txps_gl.toFixed(2)+" tx/s"+white+" | "+heat+txps_ac.toFixed(2)+" tx/s"+white+" |");
@@ -333,7 +333,7 @@ TXSCL007_socket.on('tx', function (data) {
     tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
     tx_ac++; setTimeout(function(){ tx_ac = uncount(tx_ac) }, interval*1000);
     TXSCL007_count++; setTimeout(function(){ TXSCL007_count = uncount(TXSCL007_count) }, interval*1000);
-    TXSCL007_json = '{"'+utc+'", "'+ac_name+'", "'+data.txid+'"}' ; fs.appendFile(logfile, TXSCL007_json+",\r\n", function (err) {});    
+    TXSCL007_json = '{"time": "'+time+'", "coin": "'+ac_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, TXSCL007_json+",\r\n", function (err) {});    
     TXSCL007_txps = TXSCL007_count/interval; txps_ac = tx_ac/interval; TXSCL007_txps_gl = tx_gl/interval;
     colorize_txps_i(TXSCL007_txps); colorize_txps_e(txps_ac); colorize_txps_g(TXSCL007_txps_gl);
     console.log(fadeblue+" | "+utc+white+" | "+TXSCL007_col1+data.txid+white+" | "+TXSCL007_col2+ac_name+white+" | "+heat+TXSCL007_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL007_txps_gl.toFixed(2)+" tx/s"+white+" | "+heat+txps_ac.toFixed(2)+" tx/s"+white+" |");
