@@ -1,7 +1,7 @@
 var col = require('./colors.js');
 var fs = require('fs');
 
-var interval = 20; var tx_gl = 0; tx_json = ""; coin_name = ""; txt = "";
+var interval = 20; var tx_ac =0; tx_gl = 0; tx_json = ""; coin_name = ""; txt = "";
 var TXSCL000_txps_gl = 0; TXSCL000_txps_pct = 0; TXSCL000_count = 0;
 var BTC_txps_gl = 0; BTC_txps_pct = 0; BTC_count = 0;
 var BCH_txps_gl = 0; BCH_txps_pct = 0; BCH_count = 0;
