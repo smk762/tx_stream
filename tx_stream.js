@@ -17,6 +17,8 @@ var KMD_txps_gl = 0; KMD_txps = 0; KMD_count = 0;
 var ZEC_txps_gl = 0; ZEC_txps = 0; ZEC_count = 0;
 var DASH_txps_gl = 0; DASH_txps = 0; DASH_count = 0;
 var LTC_txps_gl = 0; LTC_txps = 0; LTC_count = 0;
+var HUSH_txps_gl = 0; HUSH_txps = 0; HUSH_count = 0;
+var ZEN_txps_gl = 0; ZEN_txps = 0; ZEN_count = 0;
 
 // Set log file
 var logfile = "./tx_log.json";
@@ -97,12 +99,16 @@ BTC_col1=color_228;
 BTC_col2=color_3;
 DASH_col1=color_69;
 DASH_col2=color_27;
+HUSH_col1=color_49;
+HUSH_col2=color_127;
 KMD_col1=color_10;
 KMD_col2=color_2;
 LTC_col1=color_242;
 LTC_col2=color_231;
 ZEC_col1=color_216;
 ZEC_col2=color_208;
+ZEN_col1=color_66;
+ZEN_col2=color_108;
 
 
 // fuction to colourize individual coin's tx/s heatramp colouring
@@ -289,6 +295,40 @@ DASH_socket.on('tx', function (data) {
 });
 
 
+// ################## HUSH insight explorer socket connection #####################
+var HUSH_socket = require('socket.io-client')('https://explorer.myhush.org/');
+HUSH_socket.on('connect', function () {
+    HUSH_txt = green+"___________________________ Connected to https://explorer.myhush.org/ at "+utc+" _________________________________ "+white;
+    HUSH_socket.emit('subscribe', 'inv'); console.log(HUSH_txt);
+});
+
+HUSH_socket.on('tx', function (data) {
+    get_time(); coin_name = "HUSH";
+    tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
+    HUSH_count++; setTimeout(function(){ HUSH_count = uncount(HUSH_count) }, interval*1000);
+    HUSH_json = '{"time": "'+time+'", "coin": "'+coin_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, HUSH_json+",\r\n", function (err) {});
+    HUSH_txps = HUSH_count/interval; HUSH_txps_gl = tx_gl/interval; 
+    colorize_txps_i(HUSH_txps); colorize_txps_g(HUSH_txps_gl);
+    console.log(fadeblue+" | "+utc+white+" | "+HUSH_col1+data.txid+white+" |   "+HUSH_col2+coin_name+white+"   | "+heat+HUSH_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+HUSH_txps_gl.toFixed(2)+" tx/s"+white+" |");
+});
+
+// ################## ZEN insight explorer socket connection #####################
+var ZEN_socket = require('socket.io-client')('https://explorer.zen-solutions.io/');
+ZEN_socket.on('connect', function () {
+    ZEN_txt = green+"_______________________ Connected to https://explorer.zen-solutions.io/ at "+utc+" ____________________________ "+white;
+    ZEN_socket.emit('subscribe', 'inv'); console.log(ZEN_txt);
+});
+
+ZEN_socket.on('tx', function (data) {
+    get_time(); coin_name = "ZEN";
+    tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
+    ZEN_count++; setTimeout(function(){ ZEN_count = uncount(ZEN_count) }, interval*1000);
+    ZEN_json = '{"time": "'+time+'", "coin": "'+coin_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, ZEN_json+",\r\n", function (err) {});
+    ZEN_txps = ZEN_count/interval; ZEN_txps_gl = tx_gl/interval; 
+    colorize_txps_i(ZEN_txps); colorize_txps_g(ZEN_txps_gl);
+    console.log(fadeblue+" | "+utc+white+" | "+ZEN_col1+data.txid+white+" |   "+ZEN_col2+coin_name+white+"    | "+heat+ZEN_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+ZEN_txps_gl.toFixed(2)+" tx/s"+white+" |");
+});
+
 
 // Function for adding x y data to plotfile 
 var get_xy = setInterval(plot_txps, 15000);
@@ -300,4 +340,6 @@ function plot_txps() {
     ZEC_graph = '{"class": "ZEC", "x": "'+nix_time+'", "y": "'+ZEC_txps+'"}'; fs.appendFile(plotfile, ZEC_graph+",\r\n", function (err) {});
     LTC_graph = '{"class": "LTC", "x": "'+nix_time+'", "y": "'+LTC_txps+'"}'; fs.appendFile(plotfile, LTC_graph+",\r\n", function (err) {});
     BCH_graph = '{"class": "BCH", "x": "'+nix_time+'", "y": "'+BCH_txps+'"}'; fs.appendFile(plotfile, BCH_graph+",\r\n", function (err) {});
+    ZEN_graph = '{"class": "LTC", "x": "'+nix_time+'", "y": "'+ZEN_txps+'"}'; fs.appendFile(plotfile, ZEN_graph+",\r\n", function (err) {});
+    HUSH_graph = '{"class": "BCH", "x": "'+nix_time+'", "y": "'+HUSH_txps+'"}'; fs.appendFile(plotfile, HUSH_graph+",\r\n", function (err) {});
 }

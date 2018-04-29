@@ -1,0 +1,53 @@
+
+
+// ################## BTCP insight explorer socket connection #####################
+var BTCP_socket = require('socket.io-client')('https://insight.BTCP.siampm.com');
+BTCP_socket.on('connect', function () {
+    BTCP_txt = green+"_________________________ Connected to https://explorer.btcprivate.org/ at "+utc+" _______________________________ "+white;
+    BTCP_socket.emit('subscribe', 'inv'); console.log(BTCP_txt);
+});
+
+BTCP_socket.on('tx', function (data) {
+    get_time(); coin_name = "BTCP";
+    tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
+    BTCP_count++; setTimeout(function(){ BTCP_count = uncount(BTCP_count) }, interval*1000);
+    BTCP_json = '{"time": "'+time+'", "coin": "'+coin_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, BTCP_json+",\r\n", function (err) {});
+    BTCP_txps = BTCP_count/interval; BTCP_txps_gl = tx_gl/interval; 
+    colorize_txps_i(BTCP_txps); colorize_txps_g(BTCP_txps_gl);
+    console.log(fadeblue+" | "+utc+white+" | "+BTCP_col1+data.txid+white+" |   "+BTCP_col2+coin_name+white+"   | "+heat+BTCP_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+BTCP_txps_gl.toFixed(2)+" tx/s"+white+" |");
+});
+
+// ################## BTG insight explorer socket connection #####################
+var BTG_socket = require('socket.io-client')('https://explorer.bitcoingold.org/insight/');
+BTG_socket.on('connect', function () {
+    BTG_txt = green+"_____________________ Connected to https://explorer.bitcoingold.org/insight/ at "+utc+" _________________________ "+white;
+    BTG_socket.emit('subscribe', 'inv'); console.log(BTG_txt);
+});
+
+BTG_socket.on('tx', function (data) {
+    get_time(); coin_name = "BTG";
+    tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
+    BTG_count++; setTimeout(function(){ BTG_count = uncount(BTG_count) }, interval*1000);
+    BTG_json = '{"time": "'+time+'", "coin": "'+coin_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, BTG_json+",\r\n", function (err) {});
+    BTG_txps = BTG_count/interval; BTG_txps_gl = tx_gl/interval; 
+    colorize_txps_i(BTG_txps); colorize_txps_g(BTG_txps_gl);
+    console.log(fadeblue+" | "+utc+white+" | "+BTG_col1+data.txid+white+" |   "+BTG_col2+coin_name+white+"   | "+heat+BTG_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+BTG_txps_gl.toFixed(2)+" tx/s"+white+" |");
+});
+
+// ################## QTUM insight explorer socket connection #####################
+var QTUM_socket = require('socket.io-client')('https://qtum.info/');
+QTUM_socket.on('connect', function () {
+    QTUM_txt = green+"____________________________________ https://qtum.info/ at "+utc+" _____________________________________________ "+white;
+    QTUM_socket.emit('subscribe', 'inv'); console.log(QTUM_txt);
+});
+
+QTUM_socket.on('tx', function (data) {
+    get_time(); coin_name = "QTUM";
+    tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
+    QTUM_count++; setTimeout(function(){ QTUM_count = uncount(QTUM_count) }, interval*1000);
+    QTUM_json = '{"time": "'+time+'", "coin": "'+coin_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, QTUM_json+",\r\n", function (err) {});
+    QTUM_txps = QTUM_count/interval; QTUM_txps_gl = tx_gl/interval; 
+    colorize_txps_i(QTUM_txps); colorize_txps_g(QTUM_txps_gl);
+    console.log(fadeblue+" | "+utc+white+" | "+QTUM_col1+data.txid+white+" |   "+QTUM_col2+coin_name+white+"   | "+heat+QTUM_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+QTUM_txps_gl.toFixed(2)+" tx/s"+white+" |");
+});
+
