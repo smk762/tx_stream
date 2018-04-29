@@ -1,4 +1,4 @@
-var fs = require('fs');
+    var fs = require('fs');
 
 // Set temporal variables
 var init_time = Date.now();
@@ -22,7 +22,7 @@ var TXSCL006_txps_gl = 0; TXSCL006_txps = 0; TXSCL006_count = 0; TXSCL006_ac =0;
 var TXSCL007_txps_gl = 0; TXSCL007_txps = 0; TXSCL007_count = 0; TXSCL007_ac =0;
 
 // Set log file
-var logfile = "./tx_log.json";
+var logfile = "./txscl_log.json";
 var plotfile = "./txscl_plot.json";
 
 // interval_max is the seconds over which tx count will be averaged
@@ -131,20 +131,20 @@ TXSCL007_col2=color_93;
 // fuction to colourize individual coin's tx/s heatramp colouring
 function colorize_txps_i(tx) {
     switch(true) {
-        case (tx < 1): heat = heat1; break;
-        case (tx < 2): heat = heat2; break;
-        case (tx < 3): heat = heat3; break;
-        case (tx < 5): heat = heat4; break;
-        case (tx < 8): heat = heat5; break;
-        case (tx < 13): heat = heat6; break;
-        case (tx < 21): heat = heat7; break;
-        case (tx < 34): heat = heat8; break;
-        case (tx < 55): heat = heat9; break;
-        case (tx < 89): heat = heat10; break;
-        case (tx < 144): heat = heat11; break;
-        case (tx < 233): heat = heat12; break;
-        case (tx < 377): heat = heat13; break;
-        case (tx >= 377): heat = heat14; break;
+        case (tx < 0.5): heat = heat1; break;
+        case (tx < 1): heat = heat2; break;
+        case (tx < 1.5): heat = heat3; break;
+        case (tx < 2.5): heat = heat4; break;
+        case (tx < 3.5): heat = heat5; break;
+        case (tx < 5): heat = heat6; break;
+        case (tx < 7): heat = heat7; break;
+        case (tx < 10): heat = heat8; break;
+        case (tx < 20): heat = heat9; break;
+        case (tx < 50): heat = heat10; break;
+        case (tx < 100): heat = heat11; break;
+        case (tx < 150): heat = heat12; break;
+        case (tx < 200): heat = heat13; break;
+        case (tx >= 200): heat = heat14; break;
         default: heat = grey;
     } 
 }

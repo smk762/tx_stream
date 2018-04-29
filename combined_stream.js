@@ -138,23 +138,24 @@ TXSCL007_col2=color_93;
 // fuction to colourize individual coin's tx/s heatramp colouring
 function colorize_txps_i(tx) {
     switch(true) {
-        case (tx < 1): heat = heat1; break;
-        case (tx < 2): heat = heat2; break;
-        case (tx < 3): heat = heat3; break;
-        case (tx < 5): heat = heat4; break;
-        case (tx < 8): heat = heat5; break;
-        case (tx < 13): heat = heat6; break;
-        case (tx < 21): heat = heat7; break;
-        case (tx < 34): heat = heat8; break;
-        case (tx < 55): heat = heat9; break;
-        case (tx < 89): heat = heat10; break;
-        case (tx < 144): heat = heat11; break;
-        case (tx < 233): heat = heat12; break;
-        case (tx < 377): heat = heat13; break;
-        case (tx >= 377): heat = heat14; break;
+        case (tx < 0.5): heat = heat1; break;
+        case (tx < 1): heat = heat2; break;
+        case (tx < 1.5): heat = heat3; break;
+        case (tx < 2.5): heat = heat4; break;
+        case (tx < 3.5): heat = heat5; break;
+        case (tx < 5): heat = heat6; break;
+        case (tx < 7): heat = heat7; break;
+        case (tx < 10): heat = heat8; break;
+        case (tx < 20): heat = heat9; break;
+        case (tx < 50): heat = heat10; break;
+        case (tx < 100): heat = heat11; break;
+        case (tx < 150): heat = heat12; break;
+        case (tx < 200): heat = heat13; break;
+        case (tx >= 200): heat = heat14; break;
         default: heat = grey;
     } 
 }
+
 
 // fuction to colourize sum of Asset chain coins' tx/s heatramp colouring
 function colorize_txps_e(tx) {
@@ -182,18 +183,18 @@ function colorize_txps_g(tx) {
     switch(true) {
         case (tx < 1): heat_gl = heat1; break;
         case (tx < 2): heat_gl = heat2; break;
-        case (tx < 4): heat_gl = heat3; break;
-        case (tx < 8): heat_gl = heat4; break;
-        case (tx < 16): heat_gl = heat5; break;
-        case (tx < 32): heat_gl = heat6; break;
-        case (tx < 64): heat_gl = heat7; break;
-        case (tx < 128): heat_gl = heat8; break;
-        case (tx < 256): heat_gl = heat9; break;
-        case (tx < 512): heat_gl = heat10; break;
-        case (tx < 1024): heat_gl = heat11; break;
-        case (tx < 2048): heat_gl = heat12; break;
-        case (tx < 4096): heat_gl = heat13; break;
-        case (tx >= 4096): heat_gl = heat14; break;
+        case (tx < 3): heat_gl = heat3; break;
+        case (tx < 4): heat_gl = heat4; break;
+        case (tx < 5): heat_gl = heat5; break;
+        case (tx < 10): heat_gl = heat6; break;
+        case (tx < 20): heat_gl = heat7; break;
+        case (tx < 40): heat_gl = heat8; break;
+        case (tx < 80): heat_gl = heat9; break;
+        case (tx < 150): heat_gl = heat10; break;
+        case (tx < 250): heat_gl = heat11; break;
+        case (tx < 500): heat_gl = heat12; break;
+        case (tx < 1000): heat_gl = heat13; break;
+        case (tx >= 1000): heat_gl = heat14; break;
         default: heat_gl = grey;
     } 
 }
