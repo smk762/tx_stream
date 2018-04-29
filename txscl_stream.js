@@ -3,6 +3,7 @@ var fs = require('fs');
 // Set temporal variables
 var init_time = Date.now();
 function get_time() {
+    nix_time = Date.now();
     time = new Date();
     utc = time.toUTCString();
 }
@@ -22,6 +23,7 @@ var TXSCL007_txps_gl = 0; TXSCL007_txps = 0; TXSCL007_count = 0; TXSCL007_ac =0;
 
 // Set log file
 var logfile = "./tx_log.json";
+var plotfile = "./txscl_plot.json";
 
 // interval_max is the seconds over which tx count will be averaged
 // Low values will result in a misleadingly large tx/s when a block with a large mempool is solved quickly
@@ -350,3 +352,18 @@ TXSCL007_socket.on('tx', function (data) {
     console.log(fadeblue+" | "+utc+white+" | "+TXSCL007_col1+data.txid+white+" | "+TXSCL007_col2+ac_name+white+" | "+heat+TXSCL007_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+TXSCL007_txps_gl.toFixed(2)+" tx/s"+white+" | "+heat+txps_ac.toFixed(2)+" tx/s"+white+" |");
 });
 
+
+// Function for adding x y data to plotfile 
+var get_xy = setInterval(plot_txps, 15000);
+function plot_txps() {
+    AC_graph = '{"class": "Asset-Chains", "x": "'+nix_time+'", "y": "'+tx_ac/interval+'"}'; fs.appendFile(plotfile, AC_graph+",\r\n", function (err) {});
+    TXSCL_graph = '{"class": "TXSCL", "x": "'+nix_time+'", "y": "'+TXSCL_txps+'"}'; fs.appendFile(plotfile, TXSCL_graph+",\r\n", function (err) {});
+    TXSCL000_graph = '{"class": "TXSCL000", "x": "'+nix_time+'", "y": "'+TXSCL000_txps+'"}'; fs.appendFile(plotfile, TXSCL000_graph+",\r\n", function (err) {});
+    TXSCL001_graph = '{"class": "TXSCL001", "x": "'+nix_time+'", "y": "'+TXSCL001_txps+'"}'; fs.appendFile(plotfile, TXSCL001_graph+",\r\n", function (err) {});
+    TXSCL002_graph = '{"class": "TXSCL002", "x": "'+nix_time+'", "y": "'+TXSCL002_txps+'"}'; fs.appendFile(plotfile, TXSCL002_graph+",\r\n", function (err) {});
+    TXSCL003_graph = '{"class": "TXSCL003", "x": "'+nix_time+'", "y": "'+TXSCL003_txps+'"}'; fs.appendFile(plotfile, TXSCL003_graph+",\r\n", function (err) {});
+    TXSCL004_graph = '{"class": "TXSCL004", "x": "'+nix_time+'", "y": "'+TXSCL004_txps+'"}'; fs.appendFile(plotfile, TXSCL004_graph+",\r\n", function (err) {});
+    TXSCL005_graph = '{"class": "TXSCL005", "x": "'+nix_time+'", "y": "'+TXSCL005_txps+'"}'; fs.appendFile(plotfile, TXSCL005_graph+",\r\n", function (err) {});
+    TXSCL006_graph = '{"class": "TXSCL006", "x": "'+nix_time+'", "y": "'+TXSCL006_txps+'"}'; fs.appendFile(plotfile, TXSCL006_graph+",\r\n", function (err) {});
+    TXSCL007_graph = '{"class": "TXSCL007", "x": "'+nix_time+'", "y": "'+TXSCL007_txps+'"}'; fs.appendFile(plotfile, TXSCL007_graph+",\r\n", function (err) {});
+} 
