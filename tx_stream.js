@@ -19,6 +19,9 @@ var DASH_txps_gl = 0; DASH_txps = 0; DASH_count = 0;
 var LTC_txps_gl = 0; LTC_txps = 0; LTC_count = 0;
 var HUSH_txps_gl = 0; HUSH_txps = 0; HUSH_count = 0;
 var ZEN_txps_gl = 0; ZEN_txps = 0; ZEN_count = 0;
+var QTUM_txps_gl = 0; QTUM_txps = 0; QTUM_count = 0;
+var BTG_txps_gl = 0; BTG_txps = 0; BTG_count = 0;
+var BTCP_txps_gl = 0; BTCP_txps = 0; BTCP_count = 0;
 
 // Set log file
 var logfile = "./tx_log.json";
@@ -93,22 +96,38 @@ heat14=color_196;
 headings_col=color_33;
 
 // Set coin text colors
-BCH_col1=color_71; 
-BCH_col2=color_155;
+BCH_col1=color_191; 
+BCH_col2=color_83;
+
+KMD_col1=color_71;
+KMD_col2=color_40;
+
+HUSH_col1=color_49;
+HUSH_col2=color_111;
+
 BTC_col1=color_228;
 BTC_col2=color_3;
+
 DASH_col1=color_69;
 DASH_col2=color_27;
-HUSH_col1=color_49;
-HUSH_col2=color_127;
-KMD_col1=color_10;
-KMD_col2=color_2;
-LTC_col1=color_242;
-LTC_col2=color_231;
+
+LTC_col1=color_240;
+LTC_col2=color_248;
+
 ZEC_col1=color_216;
 ZEC_col2=color_208;
-ZEN_col1=color_66;
-ZEN_col2=color_108;
+
+ZEN_col2=color_66;
+ZEN_col1=color_108;
+
+QTUM_col2=color_66;
+QTUM_col1=color_108;
+
+BTCP_col2=color_66;
+BTCP_col1=color_108;
+
+BTG_col2=color_66;
+BTG_col1=color_108;
 
 
 // fuction to colourize individual coin's tx/s heatramp colouring
@@ -315,7 +334,7 @@ HUSH_socket.on('tx', function (data) {
 // ################## ZEN insight explorer socket connection #####################
 var ZEN_socket = require('socket.io-client')('https://explorer.zen-solutions.io/');
 ZEN_socket.on('connect', function () {
-    ZEN_txt = green+"_______________________ Connected to https://explorer.zen-solutions.io/ at "+utc+" ____________________________ "+white;
+    ZEN_txt = green+"_______________________ Connected to https://explorer.zen-solutions.io/ at "+utc+" ______________________________ "+white;
     ZEN_socket.emit('subscribe', 'inv'); console.log(ZEN_txt);
 });
 
@@ -343,3 +362,56 @@ function plot_txps() {
     ZEN_graph = '{"class": "LTC", "x": "'+nix_time+'", "y": "'+ZEN_txps+'"}'; fs.appendFile(plotfile, ZEN_graph+",\r\n", function (err) {});
     HUSH_graph = '{"class": "BCH", "x": "'+nix_time+'", "y": "'+HUSH_txps+'"}'; fs.appendFile(plotfile, HUSH_graph+",\r\n", function (err) {});
 }
+
+
+// ################## BTCP insight explorer socket connection #####################
+var BTCP_socket = require('socket.io-client')('https://insight.BTCP.siampm.com');
+BTCP_socket.on('connect', function () {
+    BTCP_txt = green+"_________________________ Connected to https://explorer.btcprivate.org/ at "+utc+" _______________________________ "+white;
+    BTCP_socket.emit('subscribe', 'inv'); console.log(BTCP_txt);
+});
+
+BTCP_socket.on('tx', function (data) {
+    get_time(); coin_name = "BTCP";
+    tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
+    BTCP_count++; setTimeout(function(){ BTCP_count = uncount(BTCP_count) }, interval*1000);
+    BTCP_json = '{"time": "'+time+'", "coin": "'+coin_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, BTCP_json+",\r\n", function (err) {});
+    BTCP_txps = BTCP_count/interval; BTCP_txps_gl = tx_gl/interval; 
+    colorize_txps_i(BTCP_txps); colorize_txps_g(BTCP_txps_gl);
+    console.log(fadeblue+" | "+utc+white+" | "+BTCP_col1+data.txid+white+" |   "+BTCP_col2+coin_name+white+"   | "+heat+BTCP_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+BTCP_txps_gl.toFixed(2)+" tx/s"+white+" |");
+});
+
+// ################## BTG insight explorer socket connection #####################
+var BTG_socket = require('socket.io-client')('https://explorer.bitcoingold.org/insight/');
+BTG_socket.on('connect', function () {
+    BTG_txt = green+"_____________________ Connected to https://explorer.bitcoingold.org/insight/ at "+utc+" _________________________ "+white;
+    BTG_socket.emit('subscribe', 'inv'); console.log(BTG_txt);
+});
+
+BTG_socket.on('tx', function (data) {
+    get_time(); coin_name = "BTG";
+    tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
+    BTG_count++; setTimeout(function(){ BTG_count = uncount(BTG_count) }, interval*1000);
+    BTG_json = '{"time": "'+time+'", "coin": "'+coin_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, BTG_json+",\r\n", function (err) {});
+    BTG_txps = BTG_count/interval; BTG_txps_gl = tx_gl/interval; 
+    colorize_txps_i(BTG_txps); colorize_txps_g(BTG_txps_gl);
+    console.log(fadeblue+" | "+utc+white+" | "+BTG_col1+data.txid+white+" |   "+BTG_col2+coin_name+white+"   | "+heat+BTG_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+BTG_txps_gl.toFixed(2)+" tx/s"+white+" |");
+});
+
+// ################## QTUM insight explorer socket connection #####################
+var QTUM_socket = require('socket.io-client')('https://qtum.info/');
+QTUM_socket.on('connect', function () {
+    QTUM_txt = green+"____________________________________ https://qtum.info/ at "+utc+" _____________________________________________ "+white;
+    QTUM_socket.emit('subscribe', 'inv'); console.log(QTUM_txt);
+});
+
+QTUM_socket.on('tx', function (data) {
+    get_time(); coin_name = "QTUM";
+    tx_gl++; setTimeout(function(){ tx_gl = uncount(tx_gl) }, interval*1000);
+    QTUM_count++; setTimeout(function(){ QTUM_count = uncount(QTUM_count) }, interval*1000);
+    QTUM_json = '{"time": "'+time+'", "coin": "'+coin_name+'", "txid": "'+data.txid+'"}'; fs.appendFile(logfile, QTUM_json+",\r\n", function (err) {});
+    QTUM_txps = QTUM_count/interval; QTUM_txps_gl = tx_gl/interval; 
+    colorize_txps_i(QTUM_txps); colorize_txps_g(QTUM_txps_gl);
+    console.log(fadeblue+" | "+utc+white+" | "+QTUM_col1+data.txid+white+" |   "+QTUM_col2+coin_name+white+"   | "+heat+QTUM_txps.toFixed(2)+" tx/s"+white+" | "+heat_gl+QTUM_txps_gl.toFixed(2)+" tx/s"+white+" |");
+});
+
